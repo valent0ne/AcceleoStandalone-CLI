@@ -23,3 +23,4 @@ Usage: java -jar AcceleoStandalone.jar [options]
 	--outtargetdir, -o
 	  	generated artifact relative path
 	 	Default: gen\
+

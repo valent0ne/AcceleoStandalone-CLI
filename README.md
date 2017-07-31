@@ -9,6 +9,7 @@ constraints (avoided by editing costants inside src/Generate.java):
 * the .mtl file **must** be called "generate.mtl"
 
 Usage: java -jar AcceleoStandalone.jar [options]
+	
 	Options:
 	--ecore, -e [required]
 	  	relative path to .ecore metamodel

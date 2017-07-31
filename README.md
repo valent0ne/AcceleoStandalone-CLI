@@ -2,8 +2,7 @@
 
 This is a small CLI .jar that allows you to compile and run .mtl acceleo files.
 All the paths are relative to the .jar location.
-Required libs inside lib.7z.
-The .jar can be found inside "_release".
+Required libs inside lib.7z, the .jar can be found inside "_release".
 
 constraints (avoided by editing costants inside src/Generate.java):
 * the main Acceleo template module **must** be called "generateElement"

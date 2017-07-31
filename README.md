@@ -5,7 +5,7 @@ All the paths are relative to the .jar location.
 
 constraints (avoided by editing costants inside src/Generate.java):
 * the main Acceleo template module **must** be called "generateElement"
-* the .mtl file **must** be placed in "mtl/" folder
+* the .mtl file **must** be placed in "mtl\" folder
 * the .mtl file **must** be called "generate.mtl"
 
 Usage: java -jar AcceleoStandalone.jar [options]

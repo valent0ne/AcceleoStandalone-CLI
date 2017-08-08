@@ -123,10 +123,10 @@ public class Main {
 		}catch(Exception e){
 			LOGGER.error(e.getMessage());
             separator();
-			LOGGER.error("[PROCESS ABORTED]");
+			LOGGER.error("[PROCESS ABORTED]{}", LINE_SEPARATOR);
 			System.exit(1);
 		}
         separator();
-		LOGGER.info("[PROCESS COMPLETED]");
+		LOGGER.info("[PROCESS COMPLETED]{}", LINE_SEPARATOR);
 	}
 }

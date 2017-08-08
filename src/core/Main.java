@@ -20,6 +20,9 @@ public class Main {
 	//line separator
 	final private static String LINE_SEPARATOR = System.lineSeparator();
 
+	//file path separator
+    final private static String PATH_SEPARATOR = File.separator;
+
 
 	//CLI params declaration
 
@@ -28,7 +31,7 @@ public class Main {
 	private static String pathToEcore;
 
 	//path dove verrà generato l'mtl compilato
-	private static String mtlTargetDirectory = "mtl\\";
+	private static String mtlTargetDirectory = "mtl"+PATH_SEPARATOR;
 
 	//nome del file .emtl
     private static String emtlName = "generate.emtl";
@@ -39,7 +42,7 @@ public class Main {
 
 	//path dove verrà generato il file .xtext
 	@Parameter(names = {"--outtargetdir", "-o"}, description = "generated artifact relative path")
-	private static String outTargetDirectory = "gen\\";
+	private static String outTargetDirectory = "gen"+PATH_SEPARATOR;
 
 	//nome del file xtext generato
 	@Parameter(names = {"--outname", "-on"}, description = "generated artifact file name")
@@ -57,7 +60,7 @@ public class Main {
 				.addObject(main)
 				.build();
 
-		jc.setProgramName("java -jar AcceleoStandalone.jar");
+		jc.setProgramName("java -jar AcceleoStandalone-CLI.jar");
 
 		try{
 			jc.parse(args);
@@ -72,7 +75,7 @@ public class Main {
 			//CLI absolute path
 			CodeSource codeSource = Main.class.getProtectionDomain().getCodeSource();
 			File jarFile = new File(codeSource.getLocation().toURI().getPath());
-			absPath = jarFile.getParentFile().getPath()+"\\";
+			absPath = jarFile.getParentFile().getPath()+PATH_SEPARATOR;
 		}catch (Exception e){
 			LOGGER.error(e.getMessage());
 			System.exit(1);
@@ -88,13 +91,12 @@ public class Main {
 
 		LOGGER.info("files to clean:{}" +
                 "     {}{}" +
-                "     {}", LINE_SEPARATOR, absPath+outTargetDirectory+outName, LINE_SEPARATOR, absPath+mtlTargetDirectory+emtlName);
-        separator();
+                "     {}",
+                LINE_SEPARATOR, absPath+outTargetDirectory+outName, LINE_SEPARATOR, absPath+mtlTargetDirectory+emtlName);
 		LOGGER.info(".mtl compilation:{}" +
 				"     source = {}{}" +
 				"     destination = {}",
-                LINE_SEPARATOR, absPath+"mtl\\", LINE_SEPARATOR, absPath+mtlTargetDirectory);
-        separator();
+                LINE_SEPARATOR, absPath+"mtl"+PATH_SEPARATOR, LINE_SEPARATOR, absPath+mtlTargetDirectory);
 		LOGGER.info("acceleo generation:{}" +
 				"     .ecore file to process = {}{}" +
 				"     .xtext artifact destination directory = {}{}" +
@@ -115,7 +117,7 @@ public class Main {
 
 			clean(absPath+outTargetDirectory+outName);
 			clean(absPath+mtlTargetDirectory+emtlName);
-			mtlCompiler(absPath+"mtl\\", absPath+mtlTargetDirectory);
+			mtlCompiler(absPath+"mtl"+PATH_SEPARATOR, absPath+mtlTargetDirectory);
 			runAcceleo(mmodelEntryPoint, outName, absPath+outTargetDirectory, ecoreLoader(absPath+pathToEcore));
 
 		}catch(Exception e){

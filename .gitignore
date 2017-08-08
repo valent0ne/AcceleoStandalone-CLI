@@ -28,3 +28,7 @@ lib/
 *.mtl
 
 *.emtl
+
+*.xtext
+
+*.ecore

@@ -6,10 +6,10 @@ Required libs inside lib.7z, the .jar can be found inside "_release".
 
 constraints (avoided by editing costants inside src/core/Generate.java):
 * the main Acceleo template module **must** be called "generateElement"
-* the .mtl file **must** be placed in "mtl\" folder
+* the .mtl file **must** be placed in "mtl/" folder
 * the .mtl file **must** be called "generate.mtl"
 
-Usage: java -jar AcceleoStandalone.jar [options]
+Usage: java -jar AcceleoStandalone-CLI.jar [options]
 	
 	Options:
 	--ecore, -e [required]

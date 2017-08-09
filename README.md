@@ -2,7 +2,7 @@
 
 This is a small CLI .jar that allows you to compile and run .mtl acceleo files.
 All the paths are relative to the .jar location.
-Required libs inside lib.7z, the .jar can be found inside "_release".
+Required libs inside lib.7z, the .jar can be found inside "out/artifacts/".
 
 constraints (avoided by editing costants inside src/core/Generate.java):
 * the main Acceleo template module **must** be called "generateElement"
@@ -21,5 +21,5 @@ Usage: java -jar AcceleoStandalone-CLI.jar [options]
 	  	Default: WebDsl.xtext
 	--outtargetdir, -o
 	  	generated artifact relative path
-	 	Default: gen\
+	 	Default: gen/
 

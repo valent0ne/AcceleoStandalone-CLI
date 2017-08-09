@@ -113,7 +113,8 @@ class Engine {
             Generate generator = new Generate(fileURI, targetFolder, acceleoArgs);
             generator.doGenerate(new BasicMonitor());
         }catch (Throwable e){
-            LOGGER.error("acceleo generation: {} - check the metamodel and the entry point",e.getMessage());
+            LOGGER.error("acceleo generation: {}",e.getMessage());
+            e.printStackTrace();
             System.exit(1);
         }
 

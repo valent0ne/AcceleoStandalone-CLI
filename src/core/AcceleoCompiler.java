@@ -9,29 +9,7 @@ import org.eclipse.emf.common.util.Monitor;
  * 
  */
 public class AcceleoCompiler extends AbstractAcceleoCompiler {
-    
-    /**
-     * The entry point of the compilation.
-     * 
-     * @param args
-     *             The arguments used in the compilation: the source folder,
-     *             the output folder, a boolean indicating if we should use binary resource
-     *             serialization and finally the dependencies of the project.
-     
-    public static void core(String[] args) {
-        if (args.length < 3) {
-            throw new IllegalArgumentException("Missing parameters"); //$NON-NLS-1$
-        }
-        AcceleoCompiler acceleoCompiler = new AcceleoCompiler();
-        acceleoCompiler.setSourceFolder(args[0]);
-        acceleoCompiler.setOutputFolder(args[1]);
-        acceleoCompiler.setBinaryResource(Boolean.valueOf(args[2]).booleanValue());
-        if (args.length == 4 && args[3] != null && !"".equals(args[3])) { //$NON-NLS-1$
-            acceleoCompiler.setDependencies(args[3]);
-        }
-        acceleoCompiler.doCompile(new BasicMonitor());
-    }
-    */
+
     /**
      * Launches the compilation of the mtl files in the generator.
      * 

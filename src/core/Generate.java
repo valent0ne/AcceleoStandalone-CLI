@@ -12,17 +12,22 @@ package core;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.acceleo.common.internal.utils.workspace.AcceleoWorkspaceUtil;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -30,12 +35,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  * @generated
  */
 public class Generate extends AbstractAcceleoGenerator {
+
+    final private static Logger LOGGER = LoggerFactory.getLogger(Generate.class);
+
     /**
      * The name of the module.
      *
      * @generated
      */
-    public static final String MODULE_FILE_NAME = "/mtl/generate";
+    public static final String MODULE_FILE_NAME = "./mtl/generate.emtl";
     
     /**
      * The name of the templates that are to be generated.
@@ -404,6 +412,27 @@ public class Generate extends AbstractAcceleoGenerator {
          */ 
         
         // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
+    }
+
+    /**
+     * Clients can override this if the default behavior doesn't properly find the emtl module URL.
+     *
+     * @param moduleName
+     *            Name of the module we're searching for.
+     * @return The template's URL. This will use Eclipse-specific behavior if possible, and use the class
+     *         loader otherwise.
+     */
+    @Override
+    protected URL findModuleURL(String moduleName) {
+        URL moduleURL = null;
+        try {
+            moduleURL = new File(getModuleName()).toURI().toURL();
+        } catch (Exception e){
+            LOGGER.error("module URL: {}",e.getMessage());
+            System.exit(1);
+        }
+
+        return moduleURL;
     }
     
 }

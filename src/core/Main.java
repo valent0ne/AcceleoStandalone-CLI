@@ -2,8 +2,6 @@ package core;
 
 
 import java.io.File;
-import java.security.CodeSource;
-
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
@@ -50,7 +48,7 @@ public class Main {
 
 
 
-	private static String absPath;
+	private static String absPath = "./";
 
 
 	public static void main(String ... args) {
@@ -68,16 +66,6 @@ public class Main {
 		}catch (Exception e){
 
 			jc.usage();
-			System.exit(1);
-		}
-
-		try{
-			//CLI absolute path
-			CodeSource codeSource = Main.class.getProtectionDomain().getCodeSource();
-			File jarFile = new File(codeSource.getLocation().toURI().getPath());
-			absPath = jarFile.getParentFile().getPath()+PATH_SEPARATOR;
-		}catch (Exception e){
-			LOGGER.error(e.getMessage());
 			System.exit(1);
 		}
 

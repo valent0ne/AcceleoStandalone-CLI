@@ -19,11 +19,12 @@ import org.slf4j.LoggerFactory;
 
 class Engine {
 
+    //logger
     final private static Logger LOGGER = LoggerFactory.getLogger(Engine.class);
 
     /**
-     * pulizia ambiente
-     * @param path path al file da eliminare
+     * environment cleaning
+     * @param path path to target
      */
     static void clean(String path){
 
@@ -40,7 +41,7 @@ class Engine {
     }
 
     /**
-     * compilazione .mtl
+     * .mtl compilation
      */
     static void mtlCompiler (String source, String dest){
 
@@ -63,8 +64,8 @@ class Engine {
     }
 
     /**
-     * caricamento e registrazione .ecore
-     * @param source path al modello .ecore da caricare
+     * .ecore load and registration
+     * @param source path to .ecore metamodel
      */
     static URI ecoreLoader (String source){
         LOGGER.info("loading {}", source);
@@ -99,7 +100,7 @@ class Engine {
     }
 
     /**
-     * generazione acceleo
+     * acceleo generation
      */
     static void runAcceleo(String entryPoint, String fileName, String dest, URI fileURI) {
 
@@ -124,10 +125,10 @@ class Engine {
     }
 
     /**
-     * copia .xtext generato in cartella di destinazione
-     * @param source file sorgente
-     * @param dest file destinazione
-     * @param xtext nome file .xtext
+     * copyies generated .xtext file in dest folder
+     * @param source source file
+     * @param dest dest file
+     * @param xtext  .xtext file name
      */
     static void xtextDispatcher(String source, String dest, String xtext){
 

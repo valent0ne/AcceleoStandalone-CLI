@@ -24,25 +24,24 @@ public class Main {
 
 	//CLI params declaration
 
-	//path al metamodello .ecore
+	//path to .ecore metamodel
 	@Parameter(names = {"--ecore", "-e"}, required = true, description = "relative path to .ecore metamodel")
 	private static String pathToEcore;
 
-	//path dove verrà generato l'mtl compilato
 	private static String mtlTargetDirectory = "mtl"+PATH_SEPARATOR;
 
-	//nome del file .emtl
+	// .emtl file name
     private static String emtlName = "generate.emtl";
 
-	//entry point del metamodello .ecore (nome dell'EClass)
+	//metamodel entry point
 	@Parameter(names = {"--entrypoint", "-ep"}, required = true, description = "metamodel entry point EClass name")
 	private static String mmodelEntryPoint;
 
-	//path dove verrà generato il file .xtext
+	//generated .xtext path
 	@Parameter(names = {"--outtargetdir", "-o"}, description = "generated artifact relative path")
 	private static String outTargetDirectory = "gen"+PATH_SEPARATOR;
 
-	//nome del file xtext generato
+	//generated xtext file name
 	@Parameter(names = {"--outname", "-on"}, description = "generated artifact file name")
 	private static String outName = "WebDsl.xtext";
 
